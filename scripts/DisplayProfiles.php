@@ -30,6 +30,12 @@ class DisplayProfiles extends DatabaseConnect {
 					$age = $display_row['age'];
 					$description = $display_row['description'];
 
+					$username = $this->db_connection->real_escape_string($username);
+					$gender = $this->db_connection->real_escape_string($gender);
+					$age = $this->db_connection->real_escape_string($age);
+					$description = $this->db_connection->real_escape_string($description);
+
+
 					$display = new Display($username, $gender, $age, $description);
 				}
 			} 
