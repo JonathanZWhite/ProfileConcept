@@ -26,10 +26,10 @@ class AddProfile extends DatabaseConnect {
 
 	public function dbInsert() {
 		if ($this->databaseConnection()) {
-			$this->username = $this->db_connection->real_escape_string($this->username);
-			$this->gender = $this->db_connection->real_escape_string($this->gender);
-			$this->age = $this->db_connection->real_escape_string($this->age);
-			$this->description = $this->db_connection->real_escape_string($this->description);
+			$this->username = $this->db_connection->real_escape_string(strip_tags($this->username));
+			$this->gender = $this->db_connection->real_escape_string(strip_tags($this->gender));
+			$this->age = $this->db_connection->real_escape_string(strip_tags($this->age));
+			$this->description = $this->db_connection->real_escape_string(strip_tags($this->description));
 
 			$add_profile_query = "INSERT INTO Profiles (username, gender, age, description) VALUES ('$this->username', '$this->gender', '$this->age', '$this->description')";
 			$status = $this->db_connection->query($add_profile_query);

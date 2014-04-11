@@ -1,8 +1,5 @@
 <?php
 
-ini_set('display_errors', true);
-error_reporting( E_ALL );
-
 require('DatabaseConnect.php');
 require('Display.php');
 
@@ -25,18 +22,12 @@ class DisplayProfiles extends DatabaseConnect {
 			if($display_results->num_rows > 0) {
 
 				while($display_row = $display_results->fetch_array()) {
-					$username = $display_row['username'];
-					$gender = $display_row['gender'];
-					$age = $display_row['age'];
-					$description = $display_row['description'];
+					$this->username = $display_row['username'];
+					$this->gender = $display_row['gender'];
+					$this->age = $display_row['age'];
+					$this->description = $display_row['description'];
 
-					$username = $this->db_connection->real_escape_string($username);
-					$gender = $this->db_connection->real_escape_string($gender);
-					$age = $this->db_connection->real_escape_string($age);
-					$description = $this->db_connection->real_escape_string($description);
-
-
-					$display = new Display($username, $gender, $age, $description);
+					$display = new Display($this->username, $this->gender, $this->age, $this->description);
 				}
 			} 
 
